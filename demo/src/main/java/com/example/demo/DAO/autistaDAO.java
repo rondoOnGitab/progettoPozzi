@@ -9,10 +9,10 @@ import java.util.List;
 public class autistaDAO {
 
     public void inserisci(String nome, String cognome) {
-        String sql = "INSERT INTO autista (nome, cognome) VALUES (?, ?)";
+        String query = "INSERT INTO autista (nome, cognome) VALUES (?, ?)";
 
         try (Connection conn = DriverManager.getConnection(DbConnection.URL, DbConnection.USER, DbConnection.PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, nome);
             stmt.setString(2, cognome);
