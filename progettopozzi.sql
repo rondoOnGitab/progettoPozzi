@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 05, 2025 alle 01:21
+-- Creato il: Mag 12, 2025 alle 19:49
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -33,6 +33,22 @@ CREATE TABLE `autista` (
   `cognome` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `autista`
+--
+
+INSERT INTO `autista` (`idAutista`, `nome`, `cognome`) VALUES
+(1, 'alessandro', 'ronconi'),
+(2, 'Giulia', 'Azzurri'),
+(3, 'Mario', 'Rossi'),
+(4, 'Giovanni', 'Bianchi'),
+(5, 'Anna', 'Verdi'),
+(6, 'Luca', 'Neri'),
+(7, 'Marco', 'Gialli'),
+(8, 'Francesca', 'Grigi'),
+(9, 'Roberto', 'Blu'),
+(10, 'Sara', 'Verdi');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +62,17 @@ CREATE TABLE `buonoconsegna` (
   `cliente` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `buonoconsegna`
+--
+
+INSERT INTO `buonoconsegna` (`idBuono`, `idPolizza`, `peso_kg`, `cliente`) VALUES
+(3, 1, 5000, 'IKEA'),
+(4, 2, 7000, 'Esselunga'),
+(10, 8, 4000, 'Mediaworld'),
+(11, 9, 11000, 'JohnDeere'),
+(12, 10, 3000, 'FarmaciaCentrale');
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +82,22 @@ CREATE TABLE `buonoconsegna` (
 CREATE TABLE `camion` (
   `targa` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `camion`
+--
+
+INSERT INTO `camion` (`targa`) VALUES
+('AB123CD'),
+('CD234EF'),
+('EF456GH'),
+('GH567IJ'),
+('IJ789KL'),
+('KL890MN'),
+('MN012OP'),
+('QR345ST'),
+('UV678WX'),
+('YZ901AB');
 
 -- --------------------------------------------------------
 
@@ -66,6 +109,22 @@ CREATE TABLE `nave` (
   `idNave` int(11) NOT NULL,
   `nome` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `nave`
+--
+
+INSERT INTO `nave` (`idNave`, `nome`) VALUES
+(8, 'Discovery'),
+(4, 'Explorer'),
+(6, 'Horizon'),
+(7, 'Majestic'),
+(3, 'Oceania'),
+(5, 'Poseidon'),
+(2, 'QueenMary'),
+(10, 'SeaBreeze'),
+(1, 'Titanic'),
+(9, 'Voyager');
 
 -- --------------------------------------------------------
 
@@ -85,6 +144,17 @@ CREATE TABLE `polizza` (
   `tariffaGiornaliera` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `polizza`
+--
+
+INSERT INTO `polizza` (`idPolizza`, `idViaggio`, `idPortoCarico`, `idPortoDestinazione`, `tipologia_merce`, `peso_kg`, `fornitore`, `giorniFranchigia`, `tariffaGiornaliera`) VALUES
+(1, 1, 1, 5, 'Container', 10000, 'Maersk', 3, 75.50),
+(2, 2, 2, 6, 'Auto', 15000, 'Fiat', 5, 65.00),
+(8, 8, 8, 12, 'Elettronica', 8000, 'Samsung', 2, 70.00),
+(9, 9, 9, 13, 'MezziAgricoli', 18000, 'NewHolland', 5, 85.00),
+(10, 10, 10, 14, 'Farmaci', 4000, 'Pfizer', 2, 95.00);
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +167,27 @@ CREATE TABLE `porto` (
   `nazionalita` varchar(64) NOT NULL,
   `linea` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `porto`
+--
+
+INSERT INTO `porto` (`idPorto`, `nome`, `nazionalita`, `linea`) VALUES
+(1, 'Porto A', 'Italia', 'Linea A'),
+(2, 'Porto B', 'Spagna', 'Linea B'),
+(3, 'Porto C', 'Francia', 'Linea C'),
+(5, 'Porto D', 'Germania', 'Linea D'),
+(6, 'Porto E', 'Portogallo', 'Linea E'),
+(7, 'Porto F', 'Olanda', 'Linea F'),
+(8, 'Porto G', 'Belgio', 'Linea G'),
+(9, 'Porto H', 'USA', 'Linea H'),
+(10, 'Porto I', 'Giappone', 'Linea I'),
+(11, 'Porto J', 'Australia', 'Linea J'),
+(12, 'Porto K', 'Brasile', 'Linea K'),
+(13, 'Porto L', 'Argentina', 'Linea L'),
+(14, 'Porto M', 'Canada', 'Linea M'),
+(15, 'Porto N', 'Cina', 'Linea N'),
+(16, 'Porto O', 'India', 'Linea O');
 
 -- --------------------------------------------------------
 
@@ -127,6 +218,20 @@ CREATE TABLE `viaggio` (
   `idPortoArrivo` int(11) NOT NULL,
   `dataAllibramento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `viaggio`
+--
+
+INSERT INTO `viaggio` (`idViaggio`, `idNave`, `data_partenza`, `idPortoPartenza`, `idPortoArrivo`, `dataAllibramento`) VALUES
+(1, 1, '2025-05-15', 1, 2, '2025-05-20'),
+(2, 2, '2025-05-16', 2, 3, '2025-05-21'),
+(8, 5, '2025-05-19', 5, 6, '2025-05-24'),
+(9, 6, '2025-05-20', 6, 7, '2025-05-25'),
+(10, 7, '2025-05-21', 7, 8, '2025-05-26'),
+(11, 8, '2025-05-22', 8, 9, '2025-05-27'),
+(12, 9, '2025-05-23', 9, 10, '2025-05-28'),
+(13, 10, '2025-05-24', 10, 1, '2025-05-29');
 
 --
 -- Indici per le tabelle scaricate
@@ -199,43 +304,43 @@ ALTER TABLE `viaggio`
 -- AUTO_INCREMENT per la tabella `autista`
 --
 ALTER TABLE `autista`
-  MODIFY `idAutista` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAutista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `buonoconsegna`
 --
 ALTER TABLE `buonoconsegna`
-  MODIFY `idBuono` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idBuono` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `nave`
 --
 ALTER TABLE `nave`
-  MODIFY `idNave` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idNave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `polizza`
 --
 ALTER TABLE `polizza`
-  MODIFY `idPolizza` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPolizza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `porto`
 --
 ALTER TABLE `porto`
-  MODIFY `idPorto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPorto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT per la tabella `ritiro`
 --
 ALTER TABLE `ritiro`
-  MODIFY `idRitiro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRitiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `viaggio`
 --
 ALTER TABLE `viaggio`
-  MODIFY `idViaggio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idViaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Limiti per le tabelle scaricate
