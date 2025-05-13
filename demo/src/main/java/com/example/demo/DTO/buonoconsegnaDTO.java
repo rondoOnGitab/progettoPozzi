@@ -4,16 +4,16 @@ public class buonoconsegnaDTO {
     private int idBuono;
     private int idPolizza;
     private int pesoKg;
-    private String cliente;
+    private int cliente;
 
     public buonoconsegnaDTO() {
         this.idBuono = -1;
         this.idPolizza = -1;
         this.pesoKg = 0;
-        this.cliente = "cliente";
+        this.cliente = -1;
     }
 
-    public buonoconsegnaDTO(int idBuono, int idPolizza, int pesoKg, String cliente) {
+    public buonoconsegnaDTO(int idBuono, int idPolizza, int pesoKg, int cliente) {
         this.idBuono = idBuono;
         this.idPolizza = idPolizza;
         this.pesoKg = pesoKg;
@@ -44,11 +44,11 @@ public class buonoconsegnaDTO {
         this.pesoKg = pesoKg;
     }
 
-    public String getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 }

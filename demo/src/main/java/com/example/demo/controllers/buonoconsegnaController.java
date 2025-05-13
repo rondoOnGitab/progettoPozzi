@@ -14,7 +14,7 @@ public class buonoconsegnaController {
 
     // Inserisce un nuovo buono consegna
     @GetMapping("/inserisci")
-    public String inserisci(@RequestParam int idPolizza, @RequestParam int pesoKg, @RequestParam String cliente) {
+    public String inserisci(@RequestParam int idPolizza, @RequestParam int pesoKg, @RequestParam int cliente) {
         dao.inserisci(idPolizza, pesoKg, cliente);
         return "Buono consegna inserito con successo!";
     }

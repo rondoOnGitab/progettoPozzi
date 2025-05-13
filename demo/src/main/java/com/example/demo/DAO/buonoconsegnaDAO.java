@@ -8,7 +8,7 @@ import java.util.List;
 
 public class buonoconsegnaDAO {
 
-    public void inserisci(int idPolizza, int pesoKg, String cliente) {
+    public void inserisci(int idPolizza, int pesoKg, int cliente) {
         String sql = "INSERT INTO buonoconsegna (idPolizza, peso_kg, cliente) VALUES (?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(DbConnection.URL, DbConnection.USER, DbConnection.PASSWORD);
@@ -16,7 +16,7 @@ public class buonoconsegnaDAO {
 
             stmt.setInt(1, idPolizza);
             stmt.setDouble(2, pesoKg);
-            stmt.setString(3, cliente);
+            stmt.setInt(3, cliente);
 
             stmt.executeUpdate();
 
@@ -38,7 +38,7 @@ public class buonoconsegnaDAO {
                 b.setIdBuono(rs.getInt("idBuono"));
                 b.setIdPolizza(rs.getInt("idPolizza"));
                 b.setPesoKg(rs.getInt("peso_kg"));
-                b.setCliente(rs.getString("cliente"));
+                b.setCliente(rs.getInt("cliente"));
                 lista.add(b);
             }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 12, 2025 alle 19:49
+-- Creato il: Mag 13, 2025 alle 13:44
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dump dei dati per la tabella `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
+(1, 'admin1', '25e4ee4e9229397b6b17776bfceaf8e7', 'admin1@example.com'),
+(2, 'admin2', '25e4ee4e9229397b6b17776bfceaf8e7', 'admin2@example.com');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `autista`
 --
 
@@ -38,16 +59,16 @@ CREATE TABLE `autista` (
 --
 
 INSERT INTO `autista` (`idAutista`, `nome`, `cognome`) VALUES
-(1, 'alessandro', 'ronconi'),
-(2, 'Giulia', 'Azzurri'),
-(3, 'Mario', 'Rossi'),
-(4, 'Giovanni', 'Bianchi'),
-(5, 'Anna', 'Verdi'),
-(6, 'Luca', 'Neri'),
-(7, 'Marco', 'Gialli'),
-(8, 'Francesca', 'Grigi'),
-(9, 'Roberto', 'Blu'),
-(10, 'Sara', 'Verdi');
+(1, 'Autista1', 'Cognome1'),
+(2, 'Autista2', 'Cognome2'),
+(3, 'Autista3', 'Cognome3'),
+(4, 'Autista4', 'Cognome4'),
+(5, 'Autista5', 'Cognome5'),
+(6, 'Autista6', 'Cognome6'),
+(7, 'Autista7', 'Cognome7'),
+(8, 'Autista8', 'Cognome8'),
+(9, 'Autista9', 'Cognome9'),
+(10, 'Autista10', 'Cognome10');
 
 -- --------------------------------------------------------
 
@@ -67,11 +88,10 @@ CREATE TABLE `buonoconsegna` (
 --
 
 INSERT INTO `buonoconsegna` (`idBuono`, `idPolizza`, `peso_kg`, `cliente`) VALUES
-(3, 1, 5000, 'IKEA'),
-(4, 2, 7000, 'Esselunga'),
-(10, 8, 4000, 'Mediaworld'),
-(11, 9, 11000, 'JohnDeere'),
-(12, 10, 3000, 'FarmaciaCentrale');
+(1, 1, 100, '1'),
+(2, 2, 200, '2'),
+(3, 3, 300, '3'),
+(4, 4, 400, '4');
 
 -- --------------------------------------------------------
 
@@ -88,16 +108,41 @@ CREATE TABLE `camion` (
 --
 
 INSERT INTO `camion` (`targa`) VALUES
-('AB123CD'),
-('CD234EF'),
-('EF456GH'),
-('GH567IJ'),
-('IJ789KL'),
-('KL890MN'),
-('MN012OP'),
-('QR345ST'),
-('UV678WX'),
-('YZ901AB');
+('TARGA001'),
+('TARGA002'),
+('TARGA003'),
+('TARGA004'),
+('TARGA005'),
+('TARGA006'),
+('TARGA007'),
+('TARGA008'),
+('TARGA009'),
+('TARGA010');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `cognome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dump dei dati per la tabella `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `username`, `password`, `nome`, `cognome`) VALUES
+(1, 'cliente1', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome1', 'Cognome1'),
+(2, 'cliente2', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome2', 'Cognome2'),
+(3, 'cliente3', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome3', 'Cognome3'),
+(4, 'cliente4', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome4', 'Cognome4'),
+(5, 'cliente5', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome5', 'Cognome5');
 
 -- --------------------------------------------------------
 
@@ -115,16 +160,16 @@ CREATE TABLE `nave` (
 --
 
 INSERT INTO `nave` (`idNave`, `nome`) VALUES
-(8, 'Discovery'),
-(4, 'Explorer'),
-(6, 'Horizon'),
-(7, 'Majestic'),
-(3, 'Oceania'),
-(5, 'Poseidon'),
-(2, 'QueenMary'),
-(10, 'SeaBreeze'),
-(1, 'Titanic'),
-(9, 'Voyager');
+(1, 'Nave1'),
+(10, 'Nave10'),
+(2, 'Nave2'),
+(3, 'Nave3'),
+(4, 'Nave4'),
+(5, 'Nave5'),
+(6, 'Nave6'),
+(7, 'Nave7'),
+(8, 'Nave8'),
+(9, 'Nave9');
 
 -- --------------------------------------------------------
 
@@ -149,11 +194,10 @@ CREATE TABLE `polizza` (
 --
 
 INSERT INTO `polizza` (`idPolizza`, `idViaggio`, `idPortoCarico`, `idPortoDestinazione`, `tipologia_merce`, `peso_kg`, `fornitore`, `giorniFranchigia`, `tariffaGiornaliera`) VALUES
-(1, 1, 1, 5, 'Container', 10000, 'Maersk', 3, 75.50),
-(2, 2, 2, 6, 'Auto', 15000, 'Fiat', 5, 65.00),
-(8, 8, 8, 12, 'Elettronica', 8000, 'Samsung', 2, 70.00),
-(9, 9, 9, 13, 'MezziAgricoli', 18000, 'NewHolland', 5, 85.00),
-(10, 10, 10, 14, 'Farmaci', 4000, 'Pfizer', 2, 95.00);
+(1, 1, 1, 10, 'Merce1', 100, 'Fornitore1', 2, 11.50),
+(2, 2, 2, 9, 'Merce2', 200, 'Fornitore2', 3, 12.50),
+(3, 3, 3, 8, 'Merce3', 300, 'Fornitore3', 4, 13.50),
+(4, 4, 4, 7, 'Merce4', 400, 'Fornitore4', 5, 14.50);
 
 -- --------------------------------------------------------
 
@@ -173,21 +217,16 @@ CREATE TABLE `porto` (
 --
 
 INSERT INTO `porto` (`idPorto`, `nome`, `nazionalita`, `linea`) VALUES
-(1, 'Porto A', 'Italia', 'Linea A'),
-(2, 'Porto B', 'Spagna', 'Linea B'),
-(3, 'Porto C', 'Francia', 'Linea C'),
-(5, 'Porto D', 'Germania', 'Linea D'),
-(6, 'Porto E', 'Portogallo', 'Linea E'),
-(7, 'Porto F', 'Olanda', 'Linea F'),
-(8, 'Porto G', 'Belgio', 'Linea G'),
-(9, 'Porto H', 'USA', 'Linea H'),
-(10, 'Porto I', 'Giappone', 'Linea I'),
-(11, 'Porto J', 'Australia', 'Linea J'),
-(12, 'Porto K', 'Brasile', 'Linea K'),
-(13, 'Porto L', 'Argentina', 'Linea L'),
-(14, 'Porto M', 'Canada', 'Linea M'),
-(15, 'Porto N', 'Cina', 'Linea N'),
-(16, 'Porto O', 'India', 'Linea O');
+(1, 'Porto1', 'Nazionalita1', 'linea1'),
+(2, 'Porto2', 'Nazionalita2', 'linea2'),
+(3, 'Porto3', 'Nazionalita3', 'linea3'),
+(4, 'Porto4', 'Nazionalita4', 'linea4'),
+(5, 'Porto5', 'Nazionalita5', 'linea5'),
+(6, 'Porto6', 'Nazionalita6', 'linea6'),
+(7, 'Porto7', 'Nazionalita7', 'linea7'),
+(8, 'Porto8', 'Nazionalita8', 'linea8'),
+(9, 'Porto9', 'Nazionalita9', 'linea9'),
+(10, 'Porto10', 'Nazionalita10', 'linea10');
 
 -- --------------------------------------------------------
 
@@ -203,6 +242,16 @@ CREATE TABLE `ritiro` (
   `data_ritiro` date NOT NULL,
   `peso_ritirato` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `ritiro`
+--
+
+INSERT INTO `ritiro` (`idRitiro`, `idBuono`, `targaCamion`, `idAutista`, `data_ritiro`, `peso_ritirato`) VALUES
+(1, 1, 'TARGA001', 1, '2025-05-11', 90),
+(2, 2, 'TARGA002', 2, '2025-05-12', 180),
+(3, 3, 'TARGA003', 3, '2025-05-13', 270),
+(4, 4, 'TARGA004', 4, '2025-05-14', 360);
 
 -- --------------------------------------------------------
 
@@ -224,18 +273,21 @@ CREATE TABLE `viaggio` (
 --
 
 INSERT INTO `viaggio` (`idViaggio`, `idNave`, `data_partenza`, `idPortoPartenza`, `idPortoArrivo`, `dataAllibramento`) VALUES
-(1, 1, '2025-05-15', 1, 2, '2025-05-20'),
-(2, 2, '2025-05-16', 2, 3, '2025-05-21'),
-(8, 5, '2025-05-19', 5, 6, '2025-05-24'),
-(9, 6, '2025-05-20', 6, 7, '2025-05-25'),
-(10, 7, '2025-05-21', 7, 8, '2025-05-26'),
-(11, 8, '2025-05-22', 8, 9, '2025-05-27'),
-(12, 9, '2025-05-23', 9, 10, '2025-05-28'),
-(13, 10, '2025-05-24', 10, 1, '2025-05-29');
+(1, 1, '2025-04-02', 1, 10, '2025-05-02'),
+(2, 2, '2025-04-02', 2, 9, '2025-05-03'),
+(3, 3, '2025-04-02', 3, 8, '2025-05-04'),
+(4, 4, '2025-04-02', 4, 7, '2025-05-05');
 
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indici per le tabelle `autista`
@@ -248,13 +300,21 @@ ALTER TABLE `autista`
 --
 ALTER TABLE `buonoconsegna`
   ADD PRIMARY KEY (`idBuono`),
-  ADD KEY `idPolizza` (`idPolizza`);
+  ADD KEY `idPolizza` (`idPolizza`),
+  ADD KEY `cliente` (`cliente`);
 
 --
 -- Indici per le tabelle `camion`
 --
 ALTER TABLE `camion`
   ADD PRIMARY KEY (`targa`);
+
+--
+-- Indici per le tabelle `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indici per le tabelle `nave`
@@ -301,16 +361,28 @@ ALTER TABLE `viaggio`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT per la tabella `autista`
 --
 ALTER TABLE `autista`
-  MODIFY `idAutista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idAutista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `buonoconsegna`
 --
 ALTER TABLE `buonoconsegna`
-  MODIFY `idBuono` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idBuono` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT per la tabella `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `nave`
@@ -322,25 +394,25 @@ ALTER TABLE `nave`
 -- AUTO_INCREMENT per la tabella `polizza`
 --
 ALTER TABLE `polizza`
-  MODIFY `idPolizza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idPolizza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `porto`
 --
 ALTER TABLE `porto`
-  MODIFY `idPorto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idPorto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `ritiro`
 --
 ALTER TABLE `ritiro`
-  MODIFY `idRitiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idRitiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `viaggio`
 --
 ALTER TABLE `viaggio`
-  MODIFY `idViaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idViaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
