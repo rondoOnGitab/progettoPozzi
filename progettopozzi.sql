@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 13, 2025 alle 13:44
+-- Creato il: Mag 15, 2025 alle 17:06
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
 (1, 'admin1', '25e4ee4e9229397b6b17776bfceaf8e7', 'admin1@example.com'),
-(2, 'admin2', '25e4ee4e9229397b6b17776bfceaf8e7', 'admin2@example.com');
+(2, 'admin2', '25e4ee4e9229397b6b17776bfceaf8e7', 'admin2@example.com'),
+(4, 'rondo', '1fc68c24f09c6987dfc697bdd4918c13', 'admin1@example.com');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,8 @@ INSERT INTO `cliente` (`id`, `username`, `password`, `nome`, `cognome`) VALUES
 (2, 'cliente2', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome2', 'Cognome2'),
 (3, 'cliente3', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome3', 'Cognome3'),
 (4, 'cliente4', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome4', 'Cognome4'),
-(5, 'cliente5', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome5', 'Cognome5');
+(5, 'cliente5', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome5', 'Cognome5'),
+(6, 'rondo', '765e8619e9a4789bd5272f37bd82437e', 'ale', 'ronco');
 
 -- --------------------------------------------------------
 
@@ -364,7 +366,7 @@ ALTER TABLE `viaggio`
 -- AUTO_INCREMENT per la tabella `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `autista`
@@ -382,7 +384,7 @@ ALTER TABLE `buonoconsegna`
 -- AUTO_INCREMENT per la tabella `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `nave`
