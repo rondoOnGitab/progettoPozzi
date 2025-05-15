@@ -1,18 +1,19 @@
 package main.java.com.example.demo.DAO;
 
 import com.example.demo.DAO.DbConnection;
-import com.example.demo.DTO.clienteDTO;
+import main.java.com.example.demo.DTO.clienteDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class clienteDAO {
 
     public void registrazione(String username, String password, String nome, String cognome) {
         String query = "INSERT INTO cliente (username, password, nome, cognome) VALUES (?, MD5(?), ?, ?)";
 
-        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection conn = DriverManager.getConnection(DbConnection.URL, DbConnection.USER, DbConnection.PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, username);
