@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRAZIONE</title>
+    <script>
+        function registraCliente() {
+        const u = document.getElementById("username").value;
+        const p = document.getElementById("password").value;
+        const n = document.getElementById("nome").value;
+        const c = document.getElementById("cognome").value;
+
+        fetch(`http://localhost:8080/cliente/registrazione?username=${u}&password=${p}&nome=${n}&cognome=${c}`)
+            .then(r => r.text())
+            .then(msg => alert(msg));
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
