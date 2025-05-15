@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 15, 2025 alle 17:06
+-- Creato il: Mag 15, 2025 alle 19:55
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -144,7 +144,12 @@ INSERT INTO `cliente` (`id`, `username`, `password`, `nome`, `cognome`) VALUES
 (3, 'cliente3', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome3', 'Cognome3'),
 (4, 'cliente4', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome4', 'Cognome4'),
 (5, 'cliente5', '8e1be2d5700ed83423c3ce6532c277a2', 'Nome5', 'Cognome5'),
-(6, 'rondo', '765e8619e9a4789bd5272f37bd82437e', 'ale', 'ronco');
+(6, 'rondo', '765e8619e9a4789bd5272f37bd82437e ', 'ale', 'ronco'),
+(7, 'rondo777', '5fed44d17d67dfa5475a81faffdb27b2', 'alessandro', 'ronconi'),
+(8, 'maspe777', 'ebe6eb14c898753a21731fcaeb9e87c0', 'alessandro', 'masperi'),
+(10, 'adascasdc', '4e8dfd401d5a459afc05b846810e11f8', 'adcsacd', '3efdsfsa'),
+(11, 'qerqwerewqrqwer', 'a95f28c2d75b68886e2c2a58f508d5f5', 'askjdchakjscdkdhjsa', 'qwefqwedfeqwfq'),
+(12, 'pozzo', '25f9e794323b453885f5181f1b624d0b', 'luca', 'pozzi');
 
 -- --------------------------------------------------------
 
@@ -278,7 +283,9 @@ INSERT INTO `viaggio` (`idViaggio`, `idNave`, `data_partenza`, `idPortoPartenza`
 (1, 1, '2025-04-02', 1, 10, '2025-05-02'),
 (2, 2, '2025-04-02', 2, 9, '2025-05-03'),
 (3, 3, '2025-04-02', 3, 8, '2025-05-04'),
-(4, 4, '2025-04-02', 4, 7, '2025-05-05');
+(4, 4, '2025-04-02', 4, 7, '2025-05-05'),
+(5, 1, '2025-04-02', 3, 2, '2025-05-02'),
+(6, 9, '1212-12-12', 7, 1, '0414-03-12');
 
 --
 -- Indici per le tabelle scaricate
@@ -384,7 +391,7 @@ ALTER TABLE `buonoconsegna`
 -- AUTO_INCREMENT per la tabella `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `nave`
@@ -414,7 +421,7 @@ ALTER TABLE `ritiro`
 -- AUTO_INCREMENT per la tabella `viaggio`
 --
 ALTER TABLE `viaggio`
-  MODIFY `idViaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idViaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Limiti per le tabelle scaricate

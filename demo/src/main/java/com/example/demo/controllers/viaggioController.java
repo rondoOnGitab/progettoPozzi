@@ -31,4 +31,5 @@ public class viaggioController {
     public List<viaggioDTO> getAll() {
         return dao.getAllViaggi();
     }
+
 }

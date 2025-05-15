@@ -29,4 +29,6 @@ public class adminController {
     public List<adminDTO> getAll() {
         return dao.getAllAdmin();
     }
+
+    
 }
